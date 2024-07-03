@@ -29,7 +29,7 @@ public class RecruitCrawlingService {
         log.info("웹 드라이버 세팅 완료");
         try{
             log.info("홈페이지 접속");
-            webDriver.get("https://www.naver.com");
+            webDriver.get("https://careers.kakao.com/jobs?skillSet=&part=TECHNOLOGY&company=KAKAO&keyword=&employeeType=&page=1");
             log.info("2초 대기");
             Thread.sleep(2000);
             source = webDriver.getPageSource();
