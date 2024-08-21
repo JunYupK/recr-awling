@@ -1,32 +1,29 @@
 package com.recruit.recrawling.llama;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.ai.bedrock.llama.BedrockLlamaChatModel;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @Slf4j
 public class LlamaController {
-    //private final ChatClient chatClient;
-    private final BedrockLlamaChatModel chatModel;
+    private final OllamaChatModel chatModel;
+    private final ChatClient chatClient;
+
 
     @Autowired
-    public LlamaController(BedrockLlamaChatModel chatModel){
-        //this.chatClient = chatClientBuilder.build();
+    LlamaController(OllamaChatModel chatModel, ChatClient chatClient){
         this.chatModel = chatModel;
+        this.chatClient = chatClient;
     }
 
 
     @GetMapping("/generate")
     public String generateText(@RequestBody String prompt) {
-//        return this.chatClient.prompt()
-//                .user(prompt)
-//                .call()
-//                .content();
         return "";
     }
 }
