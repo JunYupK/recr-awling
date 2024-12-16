@@ -12,33 +12,23 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@Service
-@Slf4j
-public class RecruitCrawlingService {
-    private static String WEB_DRIVER_ID = "webdriver.chrome.driver";
-    private static String WEB_DRIVER_PATH = "C:\\Users\\top15\\Downloads\\chromedriver-win64\\chromedriver.exe";
-    public String initCrawlingService(){
-        String source = "";
-        System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
+public interface RecruitCrawlingService {
+    /**
+     * 지정된 URL의 웹페이지를 크롤링합니다.
+     * @param url 크롤링할 웹페이지 URL
+     * @return 페이지 소스
+     */
+    String crawlPage(String url);
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        options.addArguments("--disable-popup-blocking");
-        WebDriver webDriver = new ChromeDriver(options);
+    /**
+     * 웹드라이버를 초기화합니다.
+     * @return 초기화된 WebDriver 인스턴스
+     */
+    WebDriver initializeWebDriver();
 
-        log.info("웹 드라이버 세팅 완료");
-        try{
-            log.info("홈페이지 접속");
-            webDriver.get("https://careers.kakao.com/jobs?skillSet=&part=TECHNOLOGY&company=KAKAO&keyword=&employeeType=&page=1");
-            log.info("2초 대기");
-            Thread.sleep(2000);
-            source = webDriver.getPageSource();
-        }catch (Exception e){
-            e.printStackTrace();
-        } finally {
-            webDriver.close();
-        }
-        System.out.println(source);
-        return source;
-    }
+    /**
+     * 크롤링 작업을 완료하고 리소스를 정리합니다.
+     * @param webDriver 종료할 WebDriver 인스턴스
+     */
+    void cleanup(WebDriver webDriver);
 }

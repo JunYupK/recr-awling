@@ -11,8 +11,4 @@ import org.springframework.web.bind.annotation.RestController;
 public class CrawlingController {
     @Autowired
     private RecruitCrawlingService recruitCrawlingService;
-    @GetMapping("check")
-    public String check(){
-        return recruitCrawlingService.initCrawlingService();
-    }
 }
