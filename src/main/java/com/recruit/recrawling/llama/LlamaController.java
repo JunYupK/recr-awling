@@ -1,7 +1,6 @@
 package com.recruit.recrawling.llama;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +23,10 @@ public class LlamaController {
 
     @GetMapping("/generate")
     public String generateText(@RequestBody String prompt) {
-        return "";
+        return prompt;
+    }
+    @GetMapping("/check")
+    public String testTest(@RequestBody String prompt){
+        return prompt;
     }
 }
