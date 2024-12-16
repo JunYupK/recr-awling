@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface RecruitCrawlingService {
     /**
@@ -31,4 +32,8 @@ public interface RecruitCrawlingService {
      * @param webDriver 종료할 WebDriver 인스턴스
      */
     void cleanup(WebDriver webDriver);
+
+    public List<String> extractUrls(String baseUrl);
+
+    public List<String> extractUrlsBySelector(String baseUrl, String cssSelector);
 }
